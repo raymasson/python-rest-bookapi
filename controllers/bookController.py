@@ -12,6 +12,7 @@ class Collection:
     def on_post(self, req, resp):
         resp.status = falcon.HTTP_201
         resp.body = json.dumps(req.stream.read())
+        
 class Item:
     def on_get(self, req, resp, bookId):
         resp.body = json.dumps({'id': 1, 'title': 'title 1'})
