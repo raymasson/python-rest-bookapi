@@ -1,9 +1,15 @@
 ﻿from waitress import serve
+import mongoengine as mongo
 import falcon
-import routes.bookRoutes
+import routes.bookRoutes as bookRoutes
+import middlewares
 
-app = falcon.API()
+app = falcon.API(middleware=[
+    middlewares.JSONTranslator()
+])
 
-routes.bookRoutes.add(app)
+bookRoutes.add(app)
 
-serve(app, host='localhost', port=5000)
+mongo.connect('bookAPI')
+
+serve(app, host='127.0.0.1', port=5000)
