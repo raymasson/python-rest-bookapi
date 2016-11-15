@@ -2,6 +2,7 @@
 import mongoengine as mongo
 import falcon
 import routes.bookRoutes as bookRoutes
+import routes.defaultRoutes as defaultRoutes
 import middlewares
 
 app = falcon.API(middleware=[
@@ -9,6 +10,7 @@ app = falcon.API(middleware=[
 ])
 
 bookRoutes.add(app)
+defaultRoutes.add(app)
 
 mongo.connect('bookAPI')
 
