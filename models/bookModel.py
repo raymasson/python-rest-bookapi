@@ -1,6 +1,6 @@
 from mongoengine import *
 
-class Book(Document):
+class Books(Document):
     title = StringField()
     author = StringField()
     genre = StringField()
